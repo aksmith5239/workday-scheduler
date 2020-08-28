@@ -14,15 +14,19 @@ time = moment(currentDay, "L").set("hour", 17);
 console.log(time);
 //set variable for each time block with 12:01 plus how many hours ???
 
-
+//variables we need to create:
+var eventHour = "";
 
 // scroll down to time blocks for standard business hours
 
 // view time blocks - each time block color coded to denote past, present future
 
 // click into time block and enter event
-var createEvent = (function() {
-    //create the event here - this is where the user will click into the event 
+var createEvent = (function(eventText, eventDate, eventList) {
+    var eventLi = $("<li>").addClass("list-group-item d-flex ui-state-default mt-0 p-0");
+    var eventHourDiv = $("<div>").addClass("col text-left hour p-2")
+        .text(eventHour);
+
 });
 // click save button to save event to local storage
 var saveEvent = (function(){
