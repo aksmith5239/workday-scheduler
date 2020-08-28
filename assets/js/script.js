@@ -15,27 +15,44 @@ console.log(time);
 //set variable for each time block with 12:01 plus how many hours ???
 
 //variables we need to create:
-var eventHour = "";
-
+// var eventHour = "";
+// var eventText = "";
+// var eventDate = "";
 // scroll down to time blocks for standard business hours
 
 // view time blocks - each time block color coded to denote past, present future
 
 // click into time block and enter event
-var createEvent = (function(eventText, eventDate, eventList) {
+var createEvent = (function(eventText, eventHour) {
     var eventLi = $("<li>").addClass("list-group-item d-flex ui-state-default mt-0 p-0");
     var eventHourDiv = $("<div>").addClass("col text-left hour p-2")
         .text(eventHour);
+    var eventDiv = $("<div>").addClass("col-10 text-left row p-2 future");
+    var eventTextP = $("<p>").addClass("text-left")
+        .text("event");
+    var eventSaveDiv = $("<div>").addClass("col text-right p-2 saveBtn");
+    var eventSaveSpan = $("<span>").addClass("oi oi-calendar d-flex justify-content-center m-4");
+    //append event to parent li
+    eventLi.append(eventHourDiv, eventDiv, eventTextP, eventSaveDiv, eventSaveSpan);
 
+    //append to ul on the page
+    $("#list-schedule").append(eventLi);
+    console.log(eventLi);
 });
+
+createEvent();
+
+//load the event onto the page
+var loadEvent = (function(){
+    // load event functionality here
+   });
+
 // click save button to save event to local storage
 var saveEvent = (function(){
     //save event code here
 });
 
-var loadEvent = (function(){
- // load event functionality here
-});
+
 
 // use this object as example when configuring to save to local storage
 const jsonObj = {
