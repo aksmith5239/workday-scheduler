@@ -9,8 +9,9 @@ $("#currentDay").html(currentDay);
 
 // to create time blocks we need to set a variable equal to 12:00 am on the current day
 var start = m.startOf('day');
-var firstEventTime = start.add(8, 'hours');
-console.log(firstEventTime);
+
+time = moment(currentDay, "L").set("hour", 17);
+console.log(time);
 //set variable for each time block with 12:01 plus how many hours ???
 
 
