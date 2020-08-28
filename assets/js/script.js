@@ -7,19 +7,13 @@ m = moment(); // set m as the moment
 var currentDay = m.format('dddd, MMMM Do')
 $("#currentDay").html(currentDay);
 
-// to create time blocks we need to set a variable equal to 12:01 am on the current day
-const dayStart = m.startOf('day');
-console.log(dayStart);
-//set variable for each time block with 12:01 plus how many hours
+// to create time blocks we need to set a variable equal to 12:00 am on the current day
+var start = m.startOf('day');
+var firstEventTime = start.add(8, 'hours');
+console.log(firstEventTime);
+//set variable for each time block with 12:01 plus how many hours ???
 
-var hoursArray = [
-8, 9, 10 , 11, 12, 13, 14, 15, 16, 17
-];
 
-for (var i = 0; i < hoursArray.length; i++) {
-    hour = [i];
-    
-}
 
 // scroll down to time blocks for standard business hours
 
