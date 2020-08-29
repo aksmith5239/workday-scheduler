@@ -6,10 +6,24 @@ $(document).ready(function() {
 m = moment(); // set m as the moment
 var currentDay = m.format('dddd, MMMM Do')
 $("#currentDay").html(currentDay);
-
 // to create time blocks we need to set a variable equal to 12:00 am on the current day
 var start = m.startOf('day');
+var startTime = moment();
+startTime.hour(8);
+var hoursPerSchedule = 9;
+var time = [];
+function timeOneSchedule() {
 
+    console.log(startTime);
+
+var formatedTime;
+for(i=0; i < hoursPerSchedule; i++) {
+    formattedTime = (moment().subtract(i, "hours")).format("hA");
+    time.unshift(formattedTime);
+    }   
+}
+timeOneSchedule();
+console.log(time);
 time = moment(currentDay, "L").set("hour", 17);
 console.log(time);
 //set variable for each time block with 12:01 plus how many hours ???
