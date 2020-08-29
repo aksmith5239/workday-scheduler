@@ -10,11 +10,12 @@ $("#currentDay").html(currentDay);
 var start = m.startOf('day');
 var startTime = moment();
 startTime.hour(8);
-var hoursPerSchedule = 9;
+console.log(startTime);
+var hoursPerSchedule = 24;
 var time = [];
 function timeOneSchedule() {
 
-    console.log(startTime);
+    
 
 var formatedTime;
 for(i=0; i < hoursPerSchedule; i++) {
@@ -24,8 +25,8 @@ for(i=0; i < hoursPerSchedule; i++) {
 }
 timeOneSchedule();
 console.log(time);
-time = moment(currentDay, "L").set("hour", 17);
-console.log(time);
+
+
 //set variable for each time block with 12:01 plus how many hours ???
 
 //variables we need to create:
