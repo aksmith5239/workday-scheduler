@@ -23,17 +23,22 @@ console.log(time);
 // view time blocks - each time block color coded to denote past, present future
 
 // click into time block and enter event
-var createEvent = (function(eventText, eventHour) {
+var createEvent = (function(eventHour, eventText) {
     var eventLi = $("<li>").addClass("list-group-item d-flex ui-state-default mt-0 p-0");
-    var eventHourDiv = $("<div>").addClass("col text-left hour p-2")
-        .text(eventHour);
+    var eventHourDiv = $("<div>").addClass("col text-left hour p-2");
     var eventDiv = $("<div>").addClass("col-10 text-left row p-2 future");
-    var eventTextP = $("<p>").addClass("text-left")
-        .text("event");
+    var eventTextP = $("<p>").addClass("text-left");
+        
     var eventSaveDiv = $("<div>").addClass("col text-right p-2 saveBtn");
     var eventSaveSpan = $("<span>").addClass("oi oi-calendar d-flex justify-content-center m-4");
-    //append event to parent li
-    eventLi.append(eventHourDiv, eventDiv, eventTextP, eventSaveDiv, eventSaveSpan);
+    
+    //append p inside div for event div
+    $("<p>").appendTo(".eventDiv");
+    //append span inside save div
+    $("<span>").appendTo(".eventSaveDiv");
+
+    //append divs to to parent li
+    eventLi.append(eventHourDiv, eventDiv, eventSaveDiv);
 
     //append to ul on the page
     $("#list-schedule").append(eventLi);
