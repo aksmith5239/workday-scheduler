@@ -1,85 +1,106 @@
-//start jquery
-$(document).ready(function() {
-//goal - create a schedule using a daily planner
-
-//open planner  - current day is displayed at top of calendar
+$(document).ready(function(){
+//create todays date:
 m = moment(); // set m as the moment
 var currentDay = m.format('dddd, MMMM Do')
 $("#currentDay").html(currentDay);
-// to create time blocks we need to set a variable equal to 12:00 am on the current day
-var start = m.startOf('day');
-var startTime = moment();
-startTime.hour(8);
-console.log(startTime);
-var hoursPerSchedule = 24;
-var time = [];
-function timeOneSchedule() {
 
-    
+// declare our event as blank object
+ appointments = {};
 
-var formatedTime;
-for(i=0; i < hoursPerSchedule; i++) {
-    formattedTime = (moment().subtract(i, "hours")).format("hA");
-    time.unshift(formattedTime);
-    }   
+createEvent = function() {
+    // this is where we will add the event div into the li
+
 }
-timeOneSchedule();
-console.log(time);
+//create the information that will go into events object
+
+loadEvent = function() {
+    // this is where we load the event into local storage
+
+    //--- remove as comment when ready
+    appointments = JSON.parse(localStorage.getItem("appointments"));  
+    // ---------------------------------
+    //if nothing in local storage then we create a new object to track array
+    if(!appointments) {
+        appointments = {
+            appointments: []
+        };
+    }
+    //loop over object properties
+    $.each(appointments, function(arr) {
+        arr.forEach(function(appointment){
+            createAppointment(appointments.text);
+        });
+    });
+};
 
 
-//set variable for each time block with 12:01 plus how many hours ???
 
-//variables we need to create:
-// var eventHour = "";
-// var eventText = "";
-// var eventDate = "";
-// scroll down to time blocks for standard business hours
+saveAppointments = function() {
+    // here is where we save to local storage
 
-// view time blocks - each time block color coded to denote past, present future
+     //--- remove as comment when ready
+    localStorage.setItem("appointments", JSON.stringify(appointments));  
+    // ---------------------------------
+}
 
-// click into time block and enter event
-var createEvent = (function(eventHour, eventText) {
-    var eventLi = $("<li>").addClass("list-group-item d-flex ui-state-default mt-0 p-0");
-    var eventHourDiv = $("<div>").addClass("col text-left hour p-2");
-    var eventDiv = $("<div>").addClass("col-10 text-left row p-2 future");
-    var eventTextP = $("<p>").addClass("text-left");
-        
-    var eventSaveDiv = $("<div>").addClass("col text-right p-2 saveBtn");
-    var eventSaveSpan = $("<span>").addClass("oi oi-calendar d-flex justify-content-center m-4");
-    
-    //append p inside div for event div
-    $("<p>").appendTo(".eventDiv");
-    //append span inside save div
-    $("<span>").appendTo(".eventSaveDiv");
 
-    //append divs to to parent li
-    eventLi.append(eventHourDiv, eventDiv, eventSaveDiv);
-
-    //append to ul on the page
-    $("#list-schedule").append(eventLi);
-    console.log(eventLi);
+//target the event
+$(".list-group-item").on("click", "p", function() {
+    // add content to the event block
+    var text = $(this)
+        .text()
+        .trim();
+    var textInput = $("<textarea>")
+        .addClass("form-control")
+        .val(text);
+    $(this).replaceWith(textInput);
+    textInput.trigger("focus");   
 });
 
-createEvent();
-
-//load the event onto the page
-var loadEvent = (function(){
-    // load event functionality here
-   
-   });
-
-// click save button to save event to local storage
-var saveEvent = (function(){
-    //save event code here
+$(".list-group-item").on("blur", "textarea", function(){
+    // get the current value of the textarea
+    var text = $(this)
+        .val()
+        .trim()
+    // get the id
+    var id = $(this).closest('li').attr('id');
+    var date = $(this).closest('div')
+        .text()
+        .trim();
+    console.log(date);
+    console.log(id);
+    
+    // pushes items just created into a tempArr
+    var tempArr = [];
+    tempArr.push({
+        text: text,
+        id: id
+    });
+    console.log(tempArr);
+    saveAppointments();
 });
 
 
 
-// use this object as example when configuring to save to local storage
-const jsonObj = {
-    momentObj: m
-}
-console.log(JSON.stringify(jsonObj));
-// 
 
-}); //end document.ready;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}); //end document ready
