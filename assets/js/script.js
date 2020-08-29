@@ -65,6 +65,7 @@ createEvent();
 //load the event onto the page
 var loadEvent = (function(){
     // load event functionality here
+   
    });
 
 // click save button to save event to local storage
