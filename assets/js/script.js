@@ -14,52 +14,50 @@ let time7 = moment().startOf('day').add(14, 'hours').format('hA');
 let time8 = moment().startOf('day').add(15, 'hours').format('hA');
 let time9 = moment().startOf('day').add(16, 'hours').format('hA');
 let time10 = moment().startOf('day').add(17, 'hours').format('hA');
-console.log(time1, time2, time3, time9, time10);
+
 
 const timeBlock = [time1, time2, time3, time4, time5, time6, time7, time8, time9, time10];
 console.log(timeBlock);
 
 // declare our event as blank object
  appointments = {};
+ var tempArr = [];
+// var createAppointment = function() {
+//     // this is where we will add the event div into the li
 
-createEvent = function() {
-    // this is where we will add the event div into the li
-
-}
+// };
 //create the information that will go into events object
 
-loadEvent = function() {
-    // this is where we load the event into local storage
+var loadAppointment = function() {
+    // this is where we load the value of tempArr into local storage
 
     //--- remove as comment when ready
     appointments = JSON.parse(localStorage.getItem("appointments"));  
     // ---------------------------------
     //if nothing in local storage then we create a new object to track array
-    if(!appointments) {
-        appointments = {
-            appointments: []
-        };
-    }
-    //loop over object properties
-    $.each(appointments, function(arr) {
-        arr.forEach(function(appointment){
-            createAppointment(appointments.text);
-        });
-    });
+    // if(!appointments) {
+    //     appointments = {
+    //         appointments: []
+    //     };
+    // }
+    // //loop over object properties
+    // $.each(appointments, function(arr) {
+    //     arr.forEach(function(appointment){
+    //         createAppointment(appointments.text);
+    //     });
+    // });
 };
 
 
-
-saveAppointments = function() {
-    // here is where we save to local storage
+var saveAppointments = function() {
+    // here is where we save value of tempArr to local storage
 
      //--- remove as comment when ready
-    localStorage.setItem("appointments", JSON.stringify(appointments));  
+    localStorage.setItem("appointment: ", JSON.stringify(appointments));  
     // ---------------------------------
 }
 
-
-//target the event
+//target the appointment
 $(".list-group-item").on("click", "p", function() {
     // add content to the event block
     var text = $(this)
@@ -71,7 +69,7 @@ $(".list-group-item").on("click", "p", function() {
     $(this).replaceWith(textInput);
     textInput.trigger("focus");   
 });
-
+//enter values into a text area 
 $(".list-group-item").on("blur", "textarea", function(){
     // get the current value of the textarea
     var text = $(this)
@@ -79,24 +77,33 @@ $(".list-group-item").on("blur", "textarea", function(){
         .trim()
     // get the id
     var id = $(this).closest('li').attr('id');
-    var date = $(this).closest('div')
-        .text()
-        .trim();
-    console.log(date);
+    
+    console.log(text);
     console.log(id);
     
-    // pushes items just created into a tempArr
-    var tempArr = [];
+    // push values into tempArr
     tempArr.push({
         text: text,
+        // date: date,
         id: id
+        
     });
+     
+});
+// need to chage text area back to p
+
+//
+$(".list-group-item").on("click", "span", function() {
+    //when button clicked, vlaue of tempArr saved to saveAppointments
     console.log(tempArr);
     saveAppointments();
 });
 
 
 
+// need to get time into the array
+// need to checnge cases of appointment div based on time of day
+// need to create saveAppointment and loadAppointment to get and set into localStorage
 
 
 
