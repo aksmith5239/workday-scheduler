@@ -3,6 +3,8 @@ $(document).ready(function(){
 m = moment(); // set m as the moment
 var currentDay = m.format('dddd, MMMM Do')
 $("#currentDay").html(currentDay);
+mTime = moment().format('hA');
+
 let start = moment().startOf('day');
 let time1 = moment().startOf('day').add(8, 'hours').format('hA');
 let time2 = moment().startOf('day').add(9, 'hours').format('hA');
@@ -16,11 +18,77 @@ let time9 = moment().startOf('day').add(16, 'hours').format('hA');
 let time10 = moment().startOf('day').add(17, 'hours').format('hA');
 
 
+
 const timeBlock = [time1, time2, time3, time4, time5, time6, time7, time8, time9, time10];
 console.log(timeBlock);
 
 // declare our event as blank object
- appointments = {};
+ appointments = [
+     {
+        "time": (time1),
+        "appt": ("#event-1")
+     },
+     {
+        "time": (time2),
+        "appt": ("#event-2")
+     },
+     {
+        "time": (time3),
+        "appt": ("#event-3")
+     },
+     {
+        "time": (time4),
+        "appt": ("#event-4")
+     },
+     {
+        "time": (time5),
+        "appt": ("#event-5")
+     },
+     {
+        "time": (time6),
+        "appt": ("#event-6")
+     },
+     {
+        "time": (time7),
+        "appt": ("#event-7")
+     },
+     {
+        "time": (time8),
+        "appt": ("#event-8")
+     },
+
+     {
+        "time": (time9),
+        "appt": ("#event-9")
+     },
+
+     {
+        "time": (time10),
+        "appt": ("#event-10")
+     },
+];
+
+
+
+// apptDiv = $("div.appointment");
+// hourDiv = $("div.hour").find("p");
+//     $(apptDiv).removeClass("past present future");
+//     for (var i = 0; i < appointments.length; i++) {
+        
+//         console.log(appointments[i].time);
+        
+//             if ((appointments[i].time) > $(mTime)) {
+//                 $("div.appointment").addClass("future");
+//             } else if ((appointments[i].time) < $(mTime)) {
+//                 $("div.appointment").addClass("past");
+//             } else {
+//                 $("div.appointment").addClass("present");
+//             }
+     
+        
+//     }    
+
+
  var tempArr = [];
  $('#time-1').append(time1);
  $('#time-2').append(time2);
@@ -32,6 +100,8 @@ console.log(timeBlock);
  $('#time-8').append(time8);
  $('#time-9').append(time9);
  $('#time-10').append(time10);
+
+ 
 // var createAppointment = function() {
 //     // this is where we will add the event div into the li
 
