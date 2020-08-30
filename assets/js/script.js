@@ -22,6 +22,16 @@ console.log(timeBlock);
 // declare our event as blank object
  appointments = {};
  var tempArr = [];
+ $('#time-1').append(time1);
+ $('#time-2').append(time2);
+ $('#time-3').append(time3);
+ $('#time-4').append(time4);
+ $('#time-5').append(time5);
+ $('#time-6').append(time6);
+ $('#time-7').append(time7);
+ $('#time-8').append(time8);
+ $('#time-9').append(time9);
+ $('#time-10').append(time10);
 // var createAppointment = function() {
 //     // this is where we will add the event div into the li
 
@@ -78,13 +88,9 @@ $(".list-group-item").on("blur", "textarea", function(){
     // get the id
     var id = $(this).closest('li').attr('id');
     
-    console.log(text);
-    console.log(id);
-    
     // push values into tempArr
     tempArr.push({
         text: text,
-        // date: date,
         id: id    
     });
      //recreate the p element
