@@ -85,10 +85,14 @@ $(".list-group-item").on("blur", "textarea", function(){
     tempArr.push({
         text: text,
         // date: date,
-        id: id
-        
+        id: id    
     });
-     
+     //recreate the p element
+     var apptP = $("<p>")
+     .addClass("text-left")
+     .text(text);
+     //replace the text element with this paragraph
+     $(this).replaceWith(apptP); 
 });
 // need to chage text area back to p
 
