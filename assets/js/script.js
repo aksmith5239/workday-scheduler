@@ -17,79 +17,10 @@ let time8 = moment().startOf('day').add(15, 'hours').format('hA');
 let time9 = moment().startOf('day').add(16, 'hours').format('hA');
 let time10 = moment().startOf('day').add(17, 'hours').format('hA');
 
-
-
-const timeBlock = [time1, time2, time3, time4, time5, time6, time7, time8, time9, time10];
-console.log(timeBlock);
-
-// declare our event as blank object
- appointments = [
-     {
-        "time": (time1),
-        "appt": ("#event-1")
-     },
-     {
-        "time": (time2),
-        "appt": ("#event-2")
-     },
-     {
-        "time": (time3),
-        "appt": ("#event-3")
-     },
-     {
-        "time": (time4),
-        "appt": ("#event-4")
-     },
-     {
-        "time": (time5),
-        "appt": ("#event-5")
-     },
-     {
-        "time": (time6),
-        "appt": ("#event-6")
-     },
-     {
-        "time": (time7),
-        "appt": ("#event-7")
-     },
-     {
-        "time": (time8),
-        "appt": ("#event-8")
-     },
-
-     {
-        "time": (time9),
-        "appt": ("#event-9")
-     },
-
-     {
-        "time": (time10),
-        "appt": ("#event-10")
-     },
-];
-
-
-
-// apptDiv = $("div.appointment");
-// hourDiv = $("div.hour").find("p");
-//     $(apptDiv).removeClass("past present future");
-//     for (var i = 0; i < appointments.length; i++) {
-        
-//         console.log(appointments[i].time);
-        
-//             if ((appointments[i].time) > $(mTime)) {
-//                 $("div.appointment").addClass("future");
-//             } else if ((appointments[i].time) < $(mTime)) {
-//                 $("div.appointment").addClass("past");
-//             } else {
-//                 $("div.appointment").addClass("present");
-//             }
-     
-        
-//     }    
-
-
- var tempArr = [];
+// declare our appointment as blank array
+ 
+var appointments =[];
+var tempArr = [];
  $('#time-1').append(time1);
  $('#time-2').append(time2);
  $('#time-3').append(time3);
@@ -101,43 +32,30 @@ console.log(timeBlock);
  $('#time-9').append(time9);
  $('#time-10').append(time10);
 
- 
-// var createAppointment = function() {
-//     // this is where we will add the event div into the li
-
-// };
+// need to change cases of appointment div based on time of day
+// I have tried to change the case based on the value that time1 is > < = mTime but cannot affect the proper div
 //create the information that will go into events object
 
-var loadAppointment = function() {
+var loadAppointments = function() {
     // this is where we load the value of tempArr into local storage
-
-    //--- remove as comment when ready
-    appointments = JSON.parse(localStorage.getItem("appointments"));  
+    appointments.push(JSON.parse(localStorage.getItem('appointment'))); 
     // ---------------------------------
-    //if nothing in local storage then we create a new object to track array
-    // if(!appointments) {
-    //     appointments = {
-    //         appointments: []
-    //     };
-    // }
-    // //loop over object properties
-    // $.each(appointments, function(arr) {
-    //     arr.forEach(function(appointment){
-    //         createAppointment(appointments.text);
-    //     });
-    // });
+//    //loop over the object properties
+for (var i = 0; i < appointments.length; i++) {
+    // append to html here
+    // I have tried various things but cannot find a way to append the appointment to the proper div
+    }
+    console.log(appointments);
 };
-
 
 var saveAppointments = function() {
     // here is where we save value of tempArr to local storage
-
      //--- remove as comment when ready
-    localStorage.setItem("appointment: ", JSON.stringify(appointments));  
+    localStorage.setItem("appointment", JSON.stringify(tempArr));  
+    
     // ---------------------------------
 }
 
-//target the appointment
 $(".list-group-item").on("click", "p", function() {
     // add content to the event block
     var text = $(this)
@@ -160,8 +78,8 @@ $(".list-group-item").on("blur", "textarea", function(){
     
     // push values into tempArr
     tempArr.push({
-        text: text,
-        id: id    
+        appointment: text,
+        apptId: id    
     });
      //recreate the p element
      var apptP = $("<p>")
@@ -175,34 +93,9 @@ $(".list-group-item").on("blur", "textarea", function(){
 //
 $(".list-group-item").on("click", "span", function() {
     //when button clicked, vlaue of tempArr saved to saveAppointments
-    console.log(tempArr);
+    // console.log(tempArr);
     saveAppointments();
 });
 
-
-
-// need to get time into the array
-// need to checnge cases of appointment div based on time of day
-// need to create saveAppointment and loadAppointment to get and set into localStorage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+loadAppointments();
 }); //end document ready
