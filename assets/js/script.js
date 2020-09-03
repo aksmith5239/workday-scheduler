@@ -6,7 +6,7 @@ $("#currentDay").html(currentDay);
 mTime = moment().format('hA');
 
 let start = moment().startOf('day');
-let time1 = moment().startOf('day').add(8, 'hours').format('hA');
+// let time1 = moment().startOf('day').add(8, 'hours').format('hA');
 let time2 = moment().startOf('day').add(9, 'hours').format('hA');
 let time3 = moment().startOf('day').add(10, 'hours').format('hA');
 let time4 = moment().startOf('day').add(11, 'hours').format('hA');
@@ -21,7 +21,7 @@ let time10 = moment().startOf('day').add(17, 'hours').format('hA');
  
 var appointments =[];
 var tempArr = [];
- $('#time-1').append(time1);
+//  $('#time-1').append(time1);
  $('#time-2').append(time2);
  $('#time-3').append(time3);
  $('#time-4').append(time4);
@@ -41,7 +41,10 @@ var loadAppointments = function() {
     appointments.push(JSON.parse(localStorage.getItem('appointment'))); 
     // ---------------------------------
 //    //loop over the object properties
+console.log(appointments);
 for (var i = 0; i < appointments.length; i++) {
+    // appointments[i].apptId
+    // $("#time-"+i+1);
     // append to html here
     // I have tried various things but cannot find a way to append the appointment to the proper div
     }
